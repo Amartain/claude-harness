@@ -50,6 +50,9 @@
 - **Work on `dev`.** `main` carries releases. Merging into `main` and tagging happen only when the owner asks.
 - **Edits with the edit tool**, not scripted shell edits (`sed -i`, `node -e`, heredocs that rewrite code). They
   failed silently on quoting, CRLF line endings and NUL bytes. Avoid `git stash` round-trips: they flip line endings.
+- **Numbers nobody gave.** A number a user would notice (a limit, a count, how many columns, when something happens)
+  is a proposal: pick one, keep building, and name it in the report. Fine-tuning numbers (fade lengths, spacing,
+  easing) are small details: decide and don't report.
 - **Checks in proportion.** A small change: the checks and tests it touches. The full check suite before a commit
   that ends a session or a plan, and before saying done. Always say which checks ran.
 - **Regression tests must catch the bug.** Run a new bug test once against the old code; it must fail there.
@@ -76,6 +79,7 @@ Plain writing: clearer, and cheaper in tokens. It covers chat, plans and reports
 - Simplify the syntax, never the content. Keep exact terms, numbers and caveats. No "maybe" padding around a known
   answer. Keep the dry humour.
 - Details and verification come after the actions, or on request.
+- **Unsure whether something is public-safe?** Put it under "Ask me" at the end of the message.
 - **Small details** (placement, naming, wording, ordering, which test to run): decide, do it, say so in one line.
 - **Big-picture calls** (what gets built, how it behaves or looks, what it costs or locks in later): lay out the
   options with a recommendation, and the owner picks. The owner reads plans in plan mode and comments on them, so
