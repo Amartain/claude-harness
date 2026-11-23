@@ -48,6 +48,8 @@
   repo. The owner's own tooling goes in `.git/info/exclude`. Before any commit, run `/harness:commit`.
 - **Ask before creating a new doc file in a project repo**, naming the file and why. (The brain needs no ask.)
 - **Work on `dev`.** `main` carries releases. Merging into `main` and tagging happen only when the owner asks.
+- **Bump the plugin version with each change to `plugin/`** (`plugin/.claude-plugin/plugin.json`, and a line in
+  `CHANGELOG.md`). Claude Code files its plugin copy by version, so an unbumped change never reaches a session.
 - **Edits with the edit tool**, not scripted shell edits (`sed -i`, `node -e`, heredocs that rewrite code). They
   failed silently on quoting, CRLF line endings and NUL bytes. Avoid `git stash` round-trips: they flip line endings.
 - **Numbers nobody gave.** A number a user would notice (a limit, a count, how many columns, when something happens)
