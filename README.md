@@ -36,3 +36,5 @@ Needs Python 3.12+ (`py -3` on Windows) and Claude Code.
 New project: `/harness:new-project`. Tests: `py -3 -m pytest`.
 
 `plugin/skills/python-design-patterns` is third-party, under the MIT licence in its `SOURCE.md`.
+
+No licence: this is a personal harness, shared as an example. Ask me if you want to reuse part of it.
