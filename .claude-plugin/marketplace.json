@@ -1,0 +1,12 @@
+{
+  "name": "claude-harness",
+  "description": "A Claude Code harness: one workflow for every project, with the knowledge kept in a separate brain repo.",
+  "owner": { "name": "Amartain" },
+  "plugins": [
+    {
+      "name": "harness",
+      "source": "./plugin",
+      "description": "Workflow skills, templates and start-up hooks."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "harness",
+  "version": "0.1.0",
+  "description": "Workflow skills (plan, build, baton, commit, learn, retro), templates, and the owner's start-up hook."
+}
