@@ -56,6 +56,7 @@ def merge_permissions(settings: dict[str, Any], brain: Path) -> dict[str, Any]:
         "ask": [f"Edit({permission_path(HARNESS)}/**)"],
         "allow": [f"Edit({permission_path(brain)}/**)"],
         "additionalDirectories": [brain.resolve().as_posix()],
+        "deny": [f"{tool}(~/{folder}/**)" for folder in (".ssh", ".aws") for tool in ("Read", "Edit")],
     }
     for key, values in wanted.items():
         current = perms.setdefault(key, [])

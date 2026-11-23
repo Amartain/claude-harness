@@ -12,7 +12,7 @@ description: Build one card of an approved plan - fast checks, tick the box, log
 5. Visual card: `/harness:visual-check` before it is done.
 6. A test for a found bug: run it once against the old code; it must fail there.
 7. Tick the card's boxes in the plan. Log the time:
-   `py -3 <harness>/tools/log_estimate.py <project> <plan> <card> <model> <estimate_min> <actual_min>`
-   (when the tool exists; otherwise note the minutes in the plan's "As built").
+   `py -3 <harness>/tools/log_estimate.py <project> <plan> <card> <kind> <model> <estimate_min> <actual_min>`
+   kind is app, ui, docs, tooling or harness. estimate_min is the card's nominal (uncalibrated) estimate.
 8. Next card. Between cards: fast checks plus the e2e specs the card touched. The full check suite runs before the
    commit that ends the session or the plan.
