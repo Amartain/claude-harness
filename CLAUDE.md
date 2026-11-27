@@ -2,11 +2,15 @@
 
 `<brain>` below is the brain repo named in `~/.claude/harness.toml`.
 
-## The two absolute rules (owner, 2026-11-23)
+## The two absolute rules (owner, 2026-11-23; rule 1 extended 2026-11-27)
 
 - **The harness is read-only for Claude.** Claude proposes a change and edits only after the owner says yes to that
   change. A proposal is one line in chat, `Harness proposal: <exact wording> → <file>`, and the same line with its
   reason as a `- [ ]` item in `<brain>/_harness/inbox.md`. An `ask` permission on the harness folder enforces it.
+  Before a substantive proposal, Claude separates fact (with its source), standard practice and its own opinion,
+  and walks the owner through every conflict, overlap or opinion-based point: the background needed to judge it,
+  the options, a recommendation. The owner decides. Typos, version bumps and wording the owner dictated skip the
+  walkthrough.
 - **The brain is free rein for Claude.** Edit, create files and commit there without asking. Git history is the
   safety net. Project repos keep the asks below.
 
