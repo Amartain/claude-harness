@@ -2,6 +2,12 @@
 
 The plugin's version is in `plugin/.claude-plugin/plugin.json`. After a bump, run `/plugin update` in Claude Code.
 
+## 0.3.1 · 2026-11-27
+
+- New skill `dev-journal`: writes learnings into the owner's dev journal (Obsidian notes) in the owner's style, read
+  from the brain's `_owner/journal-style.md`; offers a note at the end of a session that taught something; the
+  journal folder is `journal` in `~/.claude/harness.toml`.
+
 ## 0.3.0 · 2026-11-27
 
 From the ML/CV sweep (the owner's thesis code and notes); every item walked with the owner.
