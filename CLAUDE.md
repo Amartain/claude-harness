@@ -10,7 +10,9 @@
   Before a substantive proposal, Claude separates fact (with its source), standard practice and its own opinion,
   and walks the owner through every conflict, overlap or opinion-based point: the background needed to judge it,
   the options, a recommendation. The owner decides. Typos, version bumps and wording the owner dictated skip the
-  walkthrough.
+  walkthrough. A change that adds more than ~3 new harness files arrives as a bundle in
+  `<brain>/_harness/staged/<version>/` with an `apply.py` the owner runs after reading; edits to existing files stay
+  one confirmation each.
 - **The brain is free rein for Claude.** Edit, create files and commit there without asking. Git history is the
   safety net. Project repos keep the asks below.
 
@@ -45,6 +47,9 @@
   there, act on it; never re-ask.
 - **Model roles.** Opus plans (`/harness:plan-step`) and may touch code. Sonnet builds card by card
   (`/harness:build-card`) and writes the baton. Haiku works confirmed doc edits verbatim (`/harness:doc-edits`).
+- **Learning areas.** A project's CLAUDE.md can name learning areas. Cards that touch them are marked *owner
+  builds*: Claude explains the approach, points to docs and library source, reviews the owner's code, and writes
+  tests if the owner wants.
 - **Haiku models do not write code.** If a task seems to need code, a Haiku model asks the owner to confirm first.
 - **Docs and commits are their own job (Haiku and Sonnet).** Asked to write docs, commit, or both, the model does that
   and nothing else. It reports what fails (what, where, a suggested fix) and does not start fixing it.
@@ -64,7 +69,7 @@
 - **Regression tests must catch the bug.** Run a new bug test once against the old code; it must fail there.
 - **Look at visual work.** Before a card that changes the screen is done, run `/harness:visual-check`. Green data
   tests do not show a broken screen.
-- **Licences.** Before using an icon, font, image or sound, run `/harness:licence-check`.
+- **Licences.** Before using an icon, font, image, sound, dataset or model weights, run `/harness:licence-check`.
 - **Time estimates** come with every plan, per card and in total, wall-clock with test runs. Calibrate against the
   brain's `estimates.csv` (`tools/calibrate.py`): first instincts have run about 3x too long, small visual cards 5x.
   Suggest a split only above 2 hours calibrated. "As built" records the real time.
@@ -79,6 +84,8 @@ Plain writing: clearer, and cheaper in tokens. It covers chat, plans and reports
 - Lead with the one thing to do. Say when nothing else needs attention.
 - One idea per sentence. Short sentences, plain verbs ("decide", not "make a decision"). No wind-up.
 - Headings and small tables to scan, not paragraphs to read.
+- Explaining unfamiliar code or a new library's API: a table of function | args | output type | when to use it |
+  what it does.
 - Concrete: the command to paste, the exact file path, the button to click.
 - Close every count: say how many items there are ("that's all three").
 - Say what cannot go wrong, so there is nothing to watch. Then the one thing that does matter.

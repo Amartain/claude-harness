@@ -3,7 +3,8 @@
     py -3 <harness>/tools/log_estimate.py <project> <plan> <card> <kind> <model> <estimate_min> <actual_min>
 
 estimate_min is the first-instinct (nominal) estimate, before calibration: calibrate.py turns these rows into the
-factor to divide by. kind groups cards that run alike: app, ui, docs, tooling, harness. Wall-clock minutes.
+factor to divide by. kind groups cards that run alike: app, ui, docs, tooling, harness, and experiment for GPU
+training runs (kept out of calibrate.py's `all` line). Wall-clock minutes.
 """
 
 import csv

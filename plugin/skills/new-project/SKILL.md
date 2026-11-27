@@ -7,11 +7,14 @@ description: Set up a project's brain folder from the templates, link it into th
 
 Templates: `../../templates/` (relative to this skill's folder).
 
-1. Add the project to `<brain>/projects.toml`:
+1. Ask the project type (general or ml-cv) and any learning areas. Add the project to `<brain>/projects.toml`:
    ```toml
    [<name>]
    repo = "C:/path/to/repo"
+   type = "ml-cv"   # omit for general
    ```
+   ml-cv: also ask the scope (off-the-shelf model only / a fine-tuning proposal / fine-tuning / from scratch) and
+   record it in the project's decisions file; `/harness:ml-cv` lists the other setup questions.
 2. Create `<brain>/<name>/docs/` with: `CLAUDE.md` (from `project-CLAUDE.md`), `handoff.md`, `owner-queue.md`,
    `decisions.md`, and `plans/`.
 3. Existing project: move its `docs/` contents and `CLAUDE.md` into `<brain>/<name>/docs/` first. Trim the moved

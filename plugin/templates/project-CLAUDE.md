@@ -1,5 +1,9 @@
 # <Project>
 
+Project type: <general | ml-cv>
+<!-- ml-cv: "ML/CV project: follow /harness:ml-cv for data, models (custom or pretrained), training, fine-tuning
+and evaluation." Optional: "Learning areas: <topics the owner builds>". -->
+
 <One paragraph: what it is, who uses it, what matters most.>
 
 The workflow comes from the harness (global CLAUDE.md). This file holds only what is true for this project.

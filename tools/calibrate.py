@@ -3,7 +3,8 @@
     py -3 <harness>/tools/calibrate.py [project]
 
 Reads the brain's estimates.csv (written by log_estimate.py). The factor is total estimated ÷ total actual
-minutes, so long cards weigh more than short ones. The median per-row factor is shown beside it.
+minutes, so long cards weigh more than short ones. The median per-row factor is shown beside it. Kind
+`experiment` (GPU training runs) gets its own line but stays out of `all`: one long run would skew every factor.
 """
 
 import csv
@@ -13,6 +14,8 @@ from pathlib import Path
 from statistics import median
 
 from log_estimate import estimates_path
+
+OUTSIDE_ALL = {"experiment"}
 
 
 @dataclass(frozen=True)
@@ -39,8 +42,10 @@ def calibrate(rows: list[dict[str, str]]) -> list[Calibration]:
     groups: dict[str, list[tuple[int, int]]] = {}
     for row in rows:
         pair = (int(row["estimate_min"]), int(row["actual_min"]))
-        groups.setdefault(row["kind"] or "other", []).append(pair)
-        groups.setdefault("all", []).append(pair)
+        kind = row["kind"] or "other"
+        groups.setdefault(kind, []).append(pair)
+        if kind not in OUTSIDE_ALL:
+            groups.setdefault("all", []).append(pair)
     return [
         Calibration(
             kind=kind,

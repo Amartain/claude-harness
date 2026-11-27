@@ -47,6 +47,16 @@ def test_factor_by_kind_on_a_known_sample(tmp_path: Path) -> None:
     assert only_p["app"].rows == 1
 
 
+def test_experiment_runs_get_their_own_factor_and_stay_out_of_all(tmp_path: Path) -> None:
+    path = tmp_path / "estimates.csv"
+    for sample in (row("app", 90, 30), row("experiment", 240, 360)):
+        append(path, sample)
+    results = {c.kind: c for c in calibrate.calibrate(calibrate.read_rows(path))}
+    assert results["experiment"].factor == pytest.approx(240 / 360)
+    assert results["all"].rows == 1
+    assert results["all"].factor == pytest.approx(3.0)
+
+
 def test_an_empty_log_says_so(tmp_path: Path) -> None:
     assert calibrate.report(calibrate.calibrate(calibrate.read_rows(tmp_path / "none.csv"))) == (
         "No estimates logged yet."
