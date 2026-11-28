@@ -44,8 +44,8 @@ Needs Python 3.12+ (`py -3` on Windows) and Claude Code.
 
 New project: `/harness:new-project`. Tests: `py -3 -m pytest`.
 
-Optional: for `dev-journal`, add your notes folder to `~/.claude/harness.toml` as `journal = "C:/path/to/notes"`,
-and keep a style guide in the brain at `_owner/journal-style.md`.
+Optional: for `dev-journal`, run the installer with `--journal C:/path/to/notes` (a rerun keeps it), and keep a
+style guide in the brain at `_owner/journal-style.md`.
 
 Bigger harness changes (more than ~3 new files) arrive as a bundle in `<brain>/_harness/staged/<version>/`: read
 it, then run its `apply.py` (`--dry-run` first). It copies new files only and never overwrites.

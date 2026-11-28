@@ -16,3 +16,14 @@ def test_merge_permissions_adds_once_and_keeps_existing() -> None:
     assert twice["permissions"]["allow"] == ["Bash(ls)", "Edit(//c/Users/x/brain/**)"]
     assert len(twice["permissions"]["ask"]) == 1
     assert twice["permissions"]["ask"][0].endswith("/claude-harness/**)")
+
+
+def test_harness_toml_keeps_existing_journal_on_rerun() -> None:
+    existing = 'harness = "C:/h"\nbrain = "C:/b"\njournal = "C:/Users/x/notes"\n'
+    assert 'journal = "C:/Users/x/notes"' in install.harness_toml(Path("C:/b"), None, existing)
+
+
+def test_harness_toml_new_journal_wins_and_none_without() -> None:
+    existing = 'journal = "C:/old"\n'
+    assert 'journal = "C:/new"' in install.harness_toml(Path("C:/b"), Path("C:/new"), existing)
+    assert "journal" not in install.harness_toml(Path("C:/b"), None, "")

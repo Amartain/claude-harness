@@ -2,6 +2,12 @@
 
 The plugin's version is in `plugin/.claude-plugin/plugin.json`. After a bump, run `/plugin update` in Claude Code.
 
+## 0.3.3 · 2026-11-28
+
+- `install.py --journal PATH` writes the `journal` key; a rerun keeps an existing one (it used to overwrite
+  `harness.toml` and drop it). Tests added.
+- `research-step`: check every link resolves before handing over a reading list; mark unchecked items (M).
+
 ## 0.3.2 · 2026-11-28
 
 - Public harness holds generic direction only: owner-specific names (a model class, file names, note-naming scheme)

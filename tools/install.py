@@ -1,8 +1,8 @@
 """Install the harness on this machine. Safe to run again: every step checks before it changes anything.
 
-    py -3 tools/install.py [--brain PATH] [--dry-run]
+    py -3 tools/install.py [--brain PATH] [--journal PATH] [--dry-run]
 
-1. ~/.claude/harness.toml       where the harness and the brain are (the hooks read it)
+1. ~/.claude/harness.toml       where the harness, the brain and the journal are (keeps an existing journal)
 2. ~/.claude/CLAUDE.md          imports the harness rules and the brain's machine notes
 3. ~/.claude/settings.json      ask before editing the harness; the brain is free to edit
 4. <project>/docs junctions     one per project in the brain's projects.toml
@@ -64,6 +64,17 @@ def merge_permissions(settings: dict[str, Any], brain: Path) -> dict[str, Any]:
     return settings
 
 
+def harness_toml(brain: Path, journal: Path | None, existing: str = "") -> str:
+    """The harness.toml text. Keeps an existing `journal` key when no new one is given."""
+    if journal is None and existing:
+        old = tomllib.loads(existing).get("journal")
+        journal = Path(old) if old else None
+    text = f'harness = "{HARNESS.as_posix()}"\nbrain = "{brain.as_posix()}"\n'
+    if journal is not None:
+        text += f'journal = "{journal.as_posix()}"\n'
+    return text
+
+
 def write(path: Path, text: str, dry: bool) -> None:
     print(f"  write {path}")
     if not dry:
@@ -114,14 +125,19 @@ def install_junctions(brain: Path, dry: bool) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--brain", type=Path, default=HARNESS.parent / "brain")
+    parser.add_argument("--journal", type=Path, help="the owner's notes folder, for dev-journal (optional)")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     brain: Path = args.brain.resolve()
     dry: bool = args.dry_run
 
     print("1. harness.toml")
-    toml = f'harness = "{HARNESS.as_posix()}"\nbrain = "{brain.as_posix()}"\n'
-    write(CLAUDE_HOME / "harness.toml", toml, dry)
+    config = CLAUDE_HOME / "harness.toml"
+    existing = config.read_text(encoding="utf-8") if config.exists() else ""
+    toml = harness_toml(brain, args.journal.resolve() if args.journal else None, existing)
+    write(config, toml, dry)
+    if "journal" not in toml:
+        print("  note  no journal folder: dev-journal needs one. Rerun with --journal PATH.")
     print("2. global CLAUDE.md")
     install_claude_md(brain, dry)
     print("3. permissions")

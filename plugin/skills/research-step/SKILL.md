@@ -20,3 +20,5 @@ The owner's research process. Keep its shape; scale the numbers only if the owne
 6. **Write the research memo.** Note observations while reading; they seed the memo. Statement (1–3 sentences),
    summary grid, common tricks, advantages and disadvantages, the 2 gaps, conclusion. Mark open questions for the
    supervisor meeting.
+7. **Check every link** before handing a reading list to the owner: each paper and source-file link must resolve
+   (HTTP status 200). Mark anything unchecked or recalled from memory with (M).
