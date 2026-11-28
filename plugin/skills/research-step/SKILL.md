@@ -5,12 +5,12 @@ description: The owner's literature-research process (learned from a computer-vi
 
 # Research step
 
-The owner's process, used for the thesis. Keep its shape; scale the numbers only if the owner says so.
+The owner's research process. Keep its shape; scale the numbers only if the owner says so.
 
 1. **Find ~15 papers.** Conference papers first (and what they cite), with code available, from the last 5 years.
    Foundational papers (e.g. U-Net, ResNet) are exempt from the 5-year limit; mark them *foundation*.
 2. **Keep an annotated bibliography as you read.** Per paper: citation key, then 2–3 sentences on what it does and
-   why it matters (the thesis's `AnnotBib` is the model).
+   why it matters (a model example may sit in `<brain>/_owner/`).
 3. **Pick the 5 most relevant.** One summary each: abstract keywords, method outline, results (tables, images),
    conclusion keywords, 2–3 advantages and disadvantages. Concentrate on relevant results.
 4. **Comparison grid.** One row per study: method / annotation type | key trick | dataset | metric | baseline |

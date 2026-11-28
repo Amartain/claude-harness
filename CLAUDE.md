@@ -23,6 +23,8 @@
   junction). Also `_harness/inbox.md`, `learnings.md`, `estimates.csv`, `projects.toml`, `_owner/`.
 - **Where a learning goes:** this project → its brain folder. One workflow → that skill. Every project → this file,
   by proposal. `/harness:learn` routes it. Keep this file lean: add deliberately.
+- **What the owner wants to learn** goes to the owner's notes (the `journal` folder in `~/.claude/harness.toml`),
+  not the brain. Where and how: `<brain>/_owner/journal-style.md`. Knowledge for Claude stays in the brain.
 
 ## Session discipline
 

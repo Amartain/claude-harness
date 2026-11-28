@@ -28,7 +28,7 @@ walked with the owner (`<brain>/_harness/decisions.md`, 2026-11-27).
 
 ## Variants and ablations
 
-- Compare variants from one class with feature switches (`RAUNet(residual=False)`), named by an Enum and built
+- Compare variants from one class with feature switches (`UNet(residual=False)`), named by an Enum and built
   through a dict: `MODEL_MAP[choice]()`. The same for losses, backbones and pretrained weights.
 - CLI choices come from the Enum: `choices=[m.name for m in ModelSelection]`.
 - Guard test: `assert set(MODEL_MAP) == set(ModelSelection)`, so a variant added to only one of the two fails fast.
@@ -93,7 +93,7 @@ Every hyperparameter carries a source tag: `# paper (cite)`, `# library default`
 How far to go is agreed in the tier conversation.
 - A trivial baseline (constant or dummy) and a strong standard one (classical algorithm, stock or pretrained model).
 - The main metric next to one that covers its blind spot (for thin structures, a topology score next to Dice).
-- In-domain, and on a shifted set when one exists. In the thesis, the cross-domain test changed which model won.
+- In-domain, and on a shifted set when one exists. A cross-domain test can change which model wins.
 
 ## Estimates
 
